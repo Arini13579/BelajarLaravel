@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,9 +12,21 @@
 </head>
  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <body>
-  
-  <div class="mt-5 container table-hover">
-    <h1>Data Dosen</h1>
+</body>
+</html>
+
+ --}}
+
+ @extends('backend.master')
+ @section('content')
+ <div class="card-body">
+     <div class=" mt-5 container table-hover">
+     <a class="btn btn-primary btn-lg btn-circle" href="{{route('create-lecturer')}}">+</a>
+    <nav class="navbar navbar-light bg-light">
+      
+     <a class="navbar-brand">Data Dosen</a>
+    </nav>
+    
     @if (session('status'))
     <script>
         Swal.fire({
@@ -26,28 +38,39 @@
         
     @endif
   <table class="table">
-  <thead class="table-warning">
+     <thead class="table-secondary">
     <tr>
       <th scope="col">No.</th>
       <th scope="col">Nidn</th>
       <th scope="col">Name</th>
       <th scope="col">Adddress</th>
       <th scope="col">Phone</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
     @foreach ($Lecturer as $index=> $item)
-
    <tr>
      <th scope="row">{{$index + 1}}</th>
      <td>{{$item->nidn}}</td>
      <td>{{$item->name}}</td>
      <td>{{$item->address}}</td>
      <td>{{$item->phone}}</td>
+    <td> 
+
+      <a class="btn btn-secondary" href="{{route('edit-lecturer',$item->id)}}">Edit</a>
+      <form action="{{route('delete-lecturer', $item->id)}}" method="post" style="display: inline"
+        class="form-check-inline">
+        @csrf
+        @method('delete')
+      <button onclick="return confirm('Yakin na mu Hapus Data mu???')" class="btn btn-danger">Delete</button>
+      </form>
+      
+    </td>
    </tr>
     @endforeach
   </tbody>
-</table>
+  </table>
   </div>
-</body>
-</html>
+  </div>
+ @endsection

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </head>
-<body bg-color="green">
+<body>
+   
+</body>
+</html> --}}
+
+@extends('backend.master')
+@section('content')
     <div class="mt-5 col-sm-6 container">
       <div class="card-header bg-secondary text-white ">DOSEN</div>
         <form action="{{route('store-lecturer')}}" method="POST">
@@ -41,5 +47,4 @@
             <button type="submit" class="btn btn-secondary">Submit</button>
           </form>
     </div>
-</body>
-</html>
+@endsection
